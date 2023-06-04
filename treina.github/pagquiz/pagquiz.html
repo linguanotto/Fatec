@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terra SoftHouse - Scrum</title>
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="../imagens/favicon/favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+
+  <!-- HTML dedicado seleção de questões. -->
+
+  <div class="quizz">
+      <legend style="border: 4px;"> Selecione as perguntas sequencialmente!</legend>
+      
+      <button class="botao_1" onclick="carregar(pergunta01)">1</button>
+      <button class="botao_1" onclick="carregar(pergunta02)">2</button>
+      <button class="botao_1" onclick="carregar(pergunta03)">3</button>
+      <button class="botao_1" onclick="carregar(pergunta04)">4</button>
+      <button class="botao_1" onclick="carregar(pergunta05)">5</button>
+      <button class="botao_1" onclick="carregar(pergunta06)">6</button>
+      <button class="botao_1" onclick="carregar(pergunta07)">7</button>
+      <button class="botao_1" onclick="carregar(pergunta08)">8</button>
+      <button class="botao_1" onclick="carregar(pergunta09)">9</button>
+      <button class="botao_1" onclick="carregar(pergunta10)">10</button>
+
+    </div>
+
+        <!-- Trecho dedicado a pergunta e respostas. -->
+
+    <div class="quizz">
+      <fieldset>
+      <legend>Perguntas e alternativas</legend>
+      <h1 id="pergunta_"></h1>
+      <ul style="list-style-type: none; padding:0px">
+        <li><button class="lista" onclick="answer(1)" value=""></button></li>
+        <li><button class="lista" onclick="answer(2)" value=""></button></li>
+        <li><button class="lista" onclick="answer(3)" value=""></button></li>
+        <li><button class="lista" onclick="answer(4)" value=""></button></li>
+      </ul>
+
+      <button id="botao_2" onclick="answerTest()">Finaliza:</button>
+      <hr>
+      <h2>Tempo restante:</h2>
+
+            <!-- Display the countdown timer in an element -->
+
+    <div id="countdown2"></div>
+
+    <script>
+    function countdown( elementName, minutes, seconds )
+    {
+        var element, endTime, hours, mins, msLeft, time;
+        function twoDigits( n )
+        {
+            return (n <= 9 ? "0" + n : n);
+        }
+        function updateTimer()
+        {
+            msLeft = endTime - (+new Date);
+            if ( msLeft < 1000 ) {
+                element.innerHTML = "Seu tempo acabou!!! Atualize a página e tente de novo!!!";
+            } else {
+                time = new Date( msLeft );
+                hours = time.getUTCHours();
+                mins = time.getUTCMinutes();
+                element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+                setTimeout( updateTimer, time.getUTCMilliseconds());
+            }
+        }
+        element = document.getElementById( elementName );
+        endTime = (+new Date) + 1000 * (60*minutes + seconds);
+        updateTimer();
+    }
+    countdown( "countdown2", 20, 0 );
+    </script>
+
+    </fieldset>
+    </div>
+
+    <br />
+
+    <!-- Trecho formatação do ducumento diploma. -->
+
+    <div class="diploma">
+      <h2>
+      Insira seus dados! <br>
+      <label for="script"></label>
+      <input type="text" id="nome_diploma" type="text" placeholder="Insira seu nome completo:" />
+      <br>
+      <label for="script"></label>
+      <input type="text" id="ra_diploma" oninput="mascara(this)" placeholder="Insira seu CPF:" />
+      </h2>
+      <br>
+      <button onclick="carregaDados()">Carregar os dados:</button>
+      <br><br>
+      <button onclick="imprimir()">Imprimir diploma com resultado.</button>
+    </div>
+
+    <br>
+
+    <!-- Documento a ser impresso. -->
+
+    <div class="diploma2" >
+    <fieldset style="border: 12px rgb(51, 184, 100) ridge; ">
+      <fieldset style="border: 8px rgb(0, 86, 59) ridge;">
+        <br>
+        <img src="./img/scrum1.png" alt="Imagem para Diploma" id="imagem_diploma" />
+        <h1> "Certificado de conclusão de curso" </h1>
+        <h3> Certificamos que o aluno abaixo, concluiu com sucesso o curso de SCRUM, ministrado pela TerraSoftHouse:</h3>
+        <h2 id="diploma_nome">Nome:</h2>
+        <h2 id="diploma_ra">CPF:</h2>
+        <h3 id="nota_diploma"></h3>
+        <img src="./img/aproved.png" alt="Aprovado" width="1080" height="70" />
+        <br>
+      </fieldset>
+    </fieldset>
+    </div>
+    
+  </body>
+
+  <script src="script.js"></script>
+
+</html>
